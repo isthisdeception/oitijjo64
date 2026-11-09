@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-deep-forest: #173D32;
+  --color-primary-green: #2F6B50;
+  --color-warm-paper: #F7F4EC;
+  --color-card-white: #FFFEFA;
+  --color-terracotta: #B85C43;
+  --color-muted-gold: #C6A15B;
+  --color-main-text: #202B25;
+  --color-secondary-text: #68736B;
+  --color-border: #E7E1D5;
+}
+
+@layer base {
+  html {
+    font-family: 'Hind Siliguri', 'Noto Sans Bengali', system-ui, -apple-system, sans-serif;
+    color: var(--color-main-text);
+    background-color: var(--color-warm-paper);
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
