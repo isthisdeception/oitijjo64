@@ -1037,3 +1037,4 @@ export const DISTRICTS_SEED: District[] = [
     eventItems: [],
   },
 ];
+

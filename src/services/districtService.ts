@@ -65,3 +65,4 @@ export const districtService = {
     return Promise.resolve(DIVISIONS);
   },
 };
+
