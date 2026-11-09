@@ -72,3 +72,4 @@ export const DistrictEventSection: React.FC<DistrictEventSectionProps> = ({
     </section>
   );
 };
+

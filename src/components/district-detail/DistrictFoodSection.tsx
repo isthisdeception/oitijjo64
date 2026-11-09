@@ -58,3 +58,4 @@ export const DistrictFoodSection: React.FC<DistrictFoodSectionProps> = ({
     </section>
   );
 };
+

@@ -94,3 +94,4 @@ export const DistrictHeritageSection: React.FC<
     </section>
   );
 };
+

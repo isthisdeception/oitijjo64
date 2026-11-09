@@ -57,3 +57,4 @@ export const RelatedDistricts: React.FC<RelatedDistrictsProps> = ({
     </section>
   );
 };
+
