@@ -1,3 +1,3 @@
-// Layout components placeholder
-export {};
-
+export * from './Header';
+export * from './Footer';
+export * from './RootLayout';
