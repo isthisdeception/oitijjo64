@@ -145,3 +145,4 @@ export const TopLeaderboardPreview: React.FC = () => {
     </section>
   );
 };
+

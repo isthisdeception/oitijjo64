@@ -67,3 +67,4 @@ export const HeritageIntro: React.FC = () => {
     </section>
   );
 };
+
