@@ -8,6 +8,7 @@ import {
   LeaderboardPage,
   AboutPage,
   NotFoundPage,
+  PosterPage,
 } from '../pages';
 
 export const App: React.FC = () => {
@@ -18,6 +19,7 @@ export const App: React.FC = () => {
           <Route index element={<HomePage />} />
           <Route path="districts" element={<DistrictsPage />} />
           <Route path="district/:slug" element={<DistrictDetailPage />} />
+          <Route path="poster/:slug" element={<PosterPage />} />
           <Route path="leaderboard" element={<LeaderboardPage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="*" element={<NotFoundPage />} />

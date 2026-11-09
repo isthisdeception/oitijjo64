@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useParams, useSearchParams, useNavigate } from 'react-router-dom';
 import { PageContainer } from '../components/common/PageContainer';
 import { LoadingState } from '../components/common/LoadingState';
 import { EmptyState } from '../components/common/EmptyState';
@@ -23,6 +23,7 @@ export const DistrictDetailPage: React.FC = () => {
   const [district, setDistrict] = useState<District | null>(null);
   const [loading, setLoading] = useState(true);
 
+  const navigate = useNavigate();
   const { openVoteModal } = useVoting();
 
   useEffect(() => {
@@ -50,11 +51,11 @@ export const DistrictDetailPage: React.FC = () => {
     }
   };
 
-  // Handle poster button click (will be fully connected with poster generator in Step 9)
+  // Handle poster button click navigating to poster generator (Step 9)
   const handlePosterClick = () => {
-    alert(
-      `স্টেপ ৯-এ ${district?.nameBn} জেলার জন্য ব্রান্ডেড পোস্টার জেনারেটর টুল সংযুক্ত হবে।`
-    );
+    if (district) {
+      navigate(`/poster/${district.slug}`);
+    }
   };
 
   if (loading) {
