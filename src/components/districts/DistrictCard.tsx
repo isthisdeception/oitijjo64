@@ -1,18 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Vote, Heart } from 'lucide-react';
+import { ArrowRight, Heart } from 'lucide-react';
 import { District } from '../../types';
 import { formatNumberBn } from '../../utils';
 import { DistrictPlaceholderThumbnail } from './DistrictPlaceholderThumbnail';
+import { VoteButton } from '../voting/VoteButton';
 
 interface DistrictCardProps {
   district: District;
-  onVoteClick?: (district: District) => void;
 }
 
 export const DistrictCard: React.FC<DistrictCardProps> = ({
   district,
-  onVoteClick,
 }) => {
   return (
     <article className="group bg-heritage-card border border-heritage-border rounded-2xl p-4 sm:p-5 flex flex-col justify-between hover:border-heritage-primary/50 hover:shadow-md transition-all duration-200">
@@ -64,24 +63,8 @@ export const DistrictCard: React.FC<DistrictCardProps> = ({
           <ArrowRight className="w-3.5 h-3.5" />
         </Link>
 
-        <button
-          type="button"
-          onClick={() => {
-            if (onVoteClick) {
-              onVoteClick(district);
-            } else {
-              // Default fallback: navigate to district detail with vote action query
-              window.location.href = `/district/${district.slug}?action=vote`;
-            }
-          }}
-          className="inline-flex items-center justify-center gap-1.5 py-2 px-3.5 rounded-xl text-xs sm:text-sm font-semibold text-white bg-heritage-primary hover:bg-heritage-deep transition-colors shadow-xs"
-          aria-label={`${district.nameBn} জেলাকে ভোট দিন`}
-        >
-          <Vote className="w-3.5 h-3.5" />
-          <span>ভোট দিন</span>
-        </button>
+        <VoteButton district={district} />
       </div>
     </article>
   );
 };
-

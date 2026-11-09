@@ -154,9 +154,6 @@ export const DistrictsPage: React.FC = () => {
               <DistrictCard
                 key={district.id}
                 district={district}
-                onVoteClick={(d) => {
-                  window.location.href = `/district/${d.slug}?action=vote`;
-                }}
               />
             ))}
           </div>

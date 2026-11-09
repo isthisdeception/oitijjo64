@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { PageContainer } from '../components/common/PageContainer';
 import { LoadingState } from '../components/common/LoadingState';
 import { EmptyState } from '../components/common/EmptyState';
@@ -14,12 +14,16 @@ import {
 } from '../components/district-detail';
 import { districtService } from '../services';
 import { District } from '../types';
+import { useVoting } from '../context/VoteContext';
 import { MapPin, Compass } from 'lucide-react';
 
 export const DistrictDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
+  const [searchParams] = useSearchParams();
   const [district, setDistrict] = useState<District | null>(null);
   const [loading, setLoading] = useState(true);
+
+  const { openVoteModal } = useVoting();
 
   useEffect(() => {
     if (!slug) {
@@ -31,14 +35,19 @@ export const DistrictDetailPage: React.FC = () => {
     districtService.getBySlug(slug).then((data) => {
       setDistrict(data);
       setLoading(false);
-    });
-  }, [slug]);
 
-  // Handle vote button click (will be fully connected with modal in Step 8)
+      // If URL has ?action=vote, automatically trigger the voting modal
+      if (data && searchParams.get('action') === 'vote') {
+        openVoteModal(data);
+      }
+    });
+  }, [slug, searchParams]);
+
+  // Handle vote button click using the real Step 8 voting dialog
   const handleVoteClick = () => {
-    alert(
-      `স্টেপ ৮-এ ${district?.nameBn} জেলার জন্য গুগল সাইন-ইন ও ভোট প্রদানের ইন্টারঅ্যাকশন মোডাল সংযুক্ত হবে।`
-    );
+    if (district) {
+      openVoteModal(district);
+    }
   };
 
   // Handle poster button click (will be fully connected with poster generator in Step 9)

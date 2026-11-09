@@ -1,8 +1,23 @@
+/**
+ * PRODUCTION BOUNDARY NOTE:
+ * In this frontend-only phase, voting is simulated using client-side localStorage
+ * to validate UI states, modals, and user flows.
+ * 
+ * For Production Backend:
+ * 1. Replace this module's local storage calls with authenticated Django REST API endpoints:
+ *    - POST /api/votes/
+ *    - GET /api/votes/status/
+ * 2. Authenticate the visitor via Google OAuth2 ID Token, verified server-side on Django.
+ * 3. Enforce the one-account-one-vote rule using a database-level UNIQUE constraint
+ *    in PostgreSQL (e.g. `user_id` or `google_sub` UNIQUE on the `Vote` model).
+ * 4. Server-side validation must independently reject votes after 2026-11-21T22:00:00+06:00.
+ */
+
 import { VoteResult } from '../types';
 import { DISTRICTS_SEED } from '../data';
 import { APP_CONFIG } from '../utils/constants';
 
-const VOTE_STORAGE_KEY = 'oitijjo64_demo_vote';
+const VOTE_STORAGE_KEY = 'oitijjo64_demo_vote_v1';
 
 export const voteService = {
   /**
@@ -88,7 +103,7 @@ export const voteService = {
   },
 
   /**
-   * Reset local demo vote (useful for interface testing)
+   * Reset local demo vote (developer helper for interface testing)
    */
   async resetDemoVote(): Promise<void> {
     try {
@@ -99,4 +114,3 @@ export const voteService = {
     return Promise.resolve();
   },
 };
-

@@ -2,6 +2,8 @@ import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { Header } from './Header';
 import { Footer } from './Footer';
+import { VoteProvider } from '../../context/VoteContext';
+import { VoteDialog } from '../voting/VoteDialog';
 
 export const RootLayout: React.FC = () => {
   const { pathname } = useLocation();
@@ -12,13 +14,15 @@ export const RootLayout: React.FC = () => {
   }, [pathname]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-heritage-paper text-heritage-text font-bengali selection:bg-heritage-primary selection:text-white">
-      <Header />
-      <main className="flex-1 flex flex-col">
-        <Outlet />
-      </main>
-      <Footer />
-    </div>
+    <VoteProvider>
+      <div className="flex flex-col min-h-screen bg-heritage-paper text-heritage-text font-bengali selection:bg-heritage-primary selection:text-white">
+        <Header />
+        <main className="flex-1 flex flex-col">
+          <Outlet />
+        </main>
+        <Footer />
+        <VoteDialog />
+      </div>
+    </VoteProvider>
   );
 };
-
