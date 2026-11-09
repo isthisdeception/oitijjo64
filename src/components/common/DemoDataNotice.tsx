@@ -44,3 +44,4 @@ export const DemoDataNotice: React.FC<DemoDataNoticeProps> = ({
     </div>
   );
 };
+

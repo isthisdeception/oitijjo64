@@ -29,3 +29,4 @@ export const DistrictDetailPage: React.FC = () => {
     </div>
   );
 };
+

@@ -26,3 +26,4 @@ export const NAV_ITEMS: readonly NavItem[] = [
   { name: 'লিডারবোর্ড', path: '/leaderboard' },
   { name: 'আমাদের সম্পর্কে', path: '/about' },
 ] as const;
+

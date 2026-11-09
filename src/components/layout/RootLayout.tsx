@@ -21,3 +21,4 @@ export const RootLayout: React.FC = () => {
     </div>
   );
 };
+
