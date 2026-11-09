@@ -129,3 +129,4 @@ export const DistrictFilters: React.FC<DistrictFiltersProps> = ({
     </div>
   );
 };
+

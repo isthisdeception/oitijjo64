@@ -77,3 +77,4 @@ export const DistrictPlaceholderThumbnail: React.FC<
     </div>
   );
 };
+

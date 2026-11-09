@@ -84,3 +84,4 @@ export const DistrictCard: React.FC<DistrictCardProps> = ({
     </article>
   );
 };
+
